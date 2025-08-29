@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata Preview - Marriage Biodata Generator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .controls {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .biodata-preview {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .biodata-content {
+            padding: 40px;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .biodata-header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #d4a574;
+            padding-bottom: 20px;
+        }
+
+        .biodata-header h2 {
+            font-size: 2.5rem;
+            color: #2c5530;
+            margin-bottom: 10px;
+        }
+
+        .biodata-header .subtitle {
+            font-size: 1.2rem;
+            color: #924848;
+        }
+
+        .biodata-body {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .info-section {
+            margin-bottom: 30px;
+        }
+
+        .info-section h3 {
+            color: #4a6741;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #d4a574;
+            padding-bottom: 5px;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .info-label {
+            width: 150px;
+            font-weight: bold;
+            color: #4a6741;
+        }
+
+        .info-value {
+            flex: 1;
+            color: #333;
+        }
+
+        .photo-section {
+            text-align: center;
+        }
+
+        .photo-placeholder {
+            width: 200px;
+            height: 250px;
+            border: 3px solid #d4a574;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f6f3;
+            margin: 0 auto 20px;
+        }
+
+        .family-members {
+            margin-top: 30px;
+        }
+
+        .family-member {
+            background: #f8f6f3;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #d4a574;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .controls, .header {
+                display: none;
+            }
+            .biodata-preview {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .biodata-body {
+                grid-template-columns: 1fr;
+            }
+            .controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-eye"></i> Biodata Preview</h1>
+            <p>Review your biodata before downloading</p>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-secondary" onclick="window.location.href='form.html'">
+                <i class="fas fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-primary" onclick="downloadPDF()">
+                <i class="fas fa-download"></i> Download PDF
+            </button>
+            <button class="btn btn-secondary" onclick="window.print()">
+                <i class="fas fa-print"></i> Print
+            </button>
+            <a href="index.html" class="btn btn-secondary">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </div>
+
+        <div class="biodata-preview" id="biodataContent">
+            <div class="biodata-content">
+                <div class="biodata-header">
+                    <h2>BIODATA</h2>
+                    <div class="subtitle">|| SHREE GANESHAYA NAMAH ||</div>
+                </div>
+
+                <div class="biodata-body">
+                    <div class="main-info">
+                        <div class="info-section">
+                            <h3>Personal Information</h3>
+                            <div class="info-row">
+                                <div class="info-label">Name:</div>
+                                <div class="info-value" id="name">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Date of Birth:</div>
+                                <div class="info-value" id="dob">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Time of Birth:</div>
+                                <div class="info-value" id="birthTime">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Place of Birth:</div>
+                                <div class="info-value" id="birthPlace">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Height:</div>
+                                <div class="info-value" id="height">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Complexion:</div>
+                                <div class="info-value" id="complexion">-</div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h3>Astrological Information</h3>
+                            <div class="info-row">
+                                <div class="info-label">Rashi:</div>
+                                <div class="info-value" id="rashi">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Nakshatra:</div>
+                                <div class="info-value" id="nakshatra">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Caste:</div>
+                                <div class="info-value" id="caste">-</div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h3>Educational & Professional</h3>
+                            <div class="info-row">
+                                <div class="info-label">Qualification:</div>
+                                <div class="info-value" id="qualification">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Occupation:</div>
+                                <div class="info-value" id="occupation">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Work Status:</div>
+                                <div class="info-value" id="workStatus">-</div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h3>Family Information</h3>
+                            <div class="info-row">
+                                <div class="info-label">Father's Name:</div>
+                                <div class="info-value" id="fatherName">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Mother's Name:</div>
+                                <div class="info-value" id="motherName">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Family Type:</div>
+                                <div class="info-value" id="familyType">-</div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h3>Contact Information</h3>
+                            <div class="info-row">
+                                <div class="info-label">Phone:</div>
+                                <div class="info-value" id="phone">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Email:</div>
+                                <div class="info-value" id="email">-</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Address:</div>
+                                <div class="info-value" id="address">-</div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h3>Partner Expectations</h3>
+                            <div class="info-value" id="expectations" style="margin-top: 10px;">-</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-section">
+                        <div class="photo-placeholder" id="photoPlaceholder">
+                            <i class="fas fa-user" style="font-size: 3rem; color: #d4a574;"></i>
+                        </div>
+                        <p style="color: #666; font-size: 0.9rem;">Photo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load and display biodata
+        window.onload = function() {
+            const biodataData = JSON.parse(localStorage.getItem('biodataData') || '{}');
+            
+            // Populate form fields
+            Object.keys(biodataData).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    if (Array.isArray(biodataData[key])) {
+                        element.textContent = biodataData[key].join(', ');
+                    } else {
+                        element.textContent = biodataData[key] || '-';
+                    }
+                }
+            });
+        };
+
+        function downloadPDF() {
+            const element = document.getElementById('biodataContent');
+            const opt = {
+                margin: 1,
+                filename: 'marriage-biodata.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+</html>
+

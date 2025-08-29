@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marriage Biodata Generator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .template-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .template-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .template-preview {
+            height: 200px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .template-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        }
+
+        .template-info {
+            padding: 25px;
+        }
+
+        .template-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .template-info p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .template-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .template-features li {
+            padding: 5px 0;
+            color: #555;
+        }
+
+        .template-features li::before {
+            content: '✓';
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .select-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .select-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .templates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-heart"></i> Marriage Biodata Generator</h1>
+            <p>Create beautiful and professional marriage biodata templates</p>
+        </div>
+
+        <div class="templates-grid">
+            <div class="template-card" onclick="selectTemplate('traditional')">
+                <div class="template-preview">
+                    <i class="fas fa-user-tie" style="font-size: 4rem; color: #667eea;"></i>
+                </div>
+                <div class="template-info">
+                    <h3>Traditional Elegant</h3>
+                    <p>A classic and elegant design perfect for traditional families. Features beautiful borders and traditional Indian motifs.</p>
+                    <ul class="template-features">
+                        <li>Traditional Indian design</li>
+                        <li>Elegant borders and motifs</li>
+                        <li>Professional layout</li>
+                        <li>Print-friendly</li>
+                    </ul>
+                    <button class="select-btn">Select Template</button>
+                </div>
+            </div>
+
+            <div class="template-card" onclick="selectTemplate('modern')">
+                <div class="template-preview">
+                    <i class="fas fa-star" style="font-size: 4rem; color: #764ba2;"></i>
+                </div>
+                <div class="template-info">
+                    <h3>Modern Minimalist</h3>
+                    <p>A clean and modern design with minimalist aesthetics. Perfect for contemporary families who prefer simplicity.</p>
+                    <ul class="template-features">
+                        <li>Clean modern design</li>
+                        <li>Minimalist layout</li>
+                        <li>Easy to read</li>
+                        <li>Mobile responsive</li>
+                    </ul>
+                    <button class="select-btn">Select Template</button>
+                </div>
+            </div>
+
+            <div class="template-card" onclick="selectTemplate('floral')">
+                <div class="template-preview">
+                    <i class="fas fa-flower" style="font-size: 4rem; color: #e91e63;"></i>
+                </div>
+                <div class="template-info">
+                    <h3>Floral Delight</h3>
+                    <p>A beautiful template with floral decorations and soft colors. Ideal for those who love nature-inspired designs.</p>
+                    <ul class="template-features">
+                        <li>Floral decorations</li>
+                        <li>Soft color palette</li>
+                        <li>Elegant typography</li>
+                        <li>Nature-inspired design</li>
+                    </ul>
+                    <button class="select-btn">Select Template</button>
+                </div>
+            </div>
+
+            <div class="template-card" onclick="selectTemplate('premium')">
+                <div class="template-preview">
+                    <i class="fas fa-crown" style="font-size: 4rem; color: #ffd700;"></i>
+                </div>
+                <div class="template-info">
+                    <h3>Premium Gold</h3>
+                    <p>A luxurious template with gold accents and premium styling. Perfect for special occasions and important families.</p>
+                    <ul class="template-features">
+                        <li>Gold accents</li>
+                        <li>Premium styling</li>
+                        <li>Luxurious design</li>
+                        <li>High-quality layout</li>
+                    </ul>
+                    <button class="select-btn">Select Template</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Marriage Biodata Generator. Create beautiful biodata templates for your special moments.</p>
+        </div>
+    </div>
+
+    <script>
+        function selectTemplate(templateType) {
+            // Store the selected template type
+            localStorage.setItem('selectedTemplate', templateType);
+            // Redirect to the form page
+            window.location.href = 'form.html';
+        }
+    </script>
+</body>
+</html>
