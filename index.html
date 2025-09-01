@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marriage Biodata Generator</title>
+    <title>Marriage Biodata Maker - Create Beautiful Biodata Online</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,62 +14,170 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
             color: #333;
+            background: #f8f9fa;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
+        /* Header */
         .header {
-            text-align: center;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e74c3c;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
             color: white;
-            margin-bottom: 50px;
+            padding: 80px 0;
+            text-align: center;
         }
 
-        .header h1 {
+        .hero h1 {
             font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
-        .header p {
+        .hero p {
             font-size: 1.2rem;
+            margin-bottom: 40px;
             opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: white;
+            color: #e74c3c;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Templates Section */
+        .templates-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .templates-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .template-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
         }
 
         .template-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
         .template-preview {
             height: 200px;
-            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
             position: relative;
             overflow: hidden;
         }
@@ -79,22 +188,12 @@
             object-fit: cover;
         }
 
-        .template-preview::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-        }
-
         .template-info {
             padding: 25px;
         }
 
         .template-info h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 10px;
             color: #333;
         }
@@ -102,154 +201,553 @@
         .template-info p {
             color: #666;
             margin-bottom: 20px;
-            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
-        .template-features {
-            list-style: none;
+        .template-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            flex: 1;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #e74c3c;
+            border: 2px solid #e74c3c;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #e74c3c;
             margin-bottom: 20px;
         }
 
-        .template-features li {
-            padding: 5px 0;
-            color: #555;
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
         }
 
-        .template-features li::before {
-            content: '✓';
-            color: #667eea;
-            font-weight: bold;
-            margin-right: 10px;
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
         }
 
-        .select-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
+        /* Steps Section */
+        .steps-section {
+            padding: 80px 0;
+            background: white;
         }
 
-        .select-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
 
-        .footer {
+        .step-card {
             text-align: center;
+            padding: 40px 20px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #e74c3c;
             color: white;
-            margin-top: 50px;
-            padding: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
         }
 
-        .footer p {
-            opacity: 0.8;
+        .step-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
         }
 
+        .step-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #e74c3c;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bdc3c7;
+            line-height: 1.6;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #e74c3c;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header h1 {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
                 font-size: 2rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
             }
             
             .templates-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .template-actions {
+                flex-direction: column;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1><i class="fas fa-heart"></i> Marriage Biodata Generator</h1>
-            <p>Create beautiful and professional marriage biodata templates</p>
-        </div>
-
-        <div class="templates-grid">
-            <div class="template-card" onclick="selectTemplate('traditional')">
-                <div class="template-preview">
-                    <i class="fas fa-user-tie" style="font-size: 4rem; color: #667eea;"></i>
-                </div>
-                <div class="template-info">
-                    <h3>Traditional Elegant</h3>
-                    <p>A classic and elegant design perfect for traditional families. Features beautiful borders and traditional Indian motifs.</p>
-                    <ul class="template-features">
-                        <li>Traditional Indian design</li>
-                        <li>Elegant borders and motifs</li>
-                        <li>Professional layout</li>
-                        <li>Print-friendly</li>
-                    </ul>
-                    <button class="select-btn">Select Template</button>
-                </div>
-            </div>
-
-            <div class="template-card" onclick="selectTemplate('modern')">
-                <div class="template-preview">
-                    <i class="fas fa-star" style="font-size: 4rem; color: #764ba2;"></i>
-                </div>
-                <div class="template-info">
-                    <h3>Modern Minimalist</h3>
-                    <p>A clean and modern design with minimalist aesthetics. Perfect for contemporary families who prefer simplicity.</p>
-                    <ul class="template-features">
-                        <li>Clean modern design</li>
-                        <li>Minimalist layout</li>
-                        <li>Easy to read</li>
-                        <li>Mobile responsive</li>
-                    </ul>
-                    <button class="select-btn">Select Template</button>
-                </div>
-            </div>
-
-            <div class="template-card" onclick="selectTemplate('floral')">
-                <div class="template-preview">
-                    <i class="fas fa-flower" style="font-size: 4rem; color: #e91e63;"></i>
-                </div>
-                <div class="template-info">
-                    <h3>Floral Delight</h3>
-                    <p>A beautiful template with floral decorations and soft colors. Ideal for those who love nature-inspired designs.</p>
-                    <ul class="template-features">
-                        <li>Floral decorations</li>
-                        <li>Soft color palette</li>
-                        <li>Elegant typography</li>
-                        <li>Nature-inspired design</li>
-                    </ul>
-                    <button class="select-btn">Select Template</button>
-                </div>
-            </div>
-
-            <div class="template-card" onclick="selectTemplate('premium')">
-                <div class="template-preview">
-                    <i class="fas fa-crown" style="font-size: 4rem; color: #ffd700;"></i>
-                </div>
-                <div class="template-info">
-                    <h3>Premium Gold</h3>
-                    <p>A luxurious template with gold accents and premium styling. Perfect for special occasions and important families.</p>
-                    <ul class="template-features">
-                        <li>Gold accents</li>
-                        <li>Premium styling</li>
-                        <li>Luxurious design</li>
-                        <li>High-quality layout</li>
-                    </ul>
-                    <button class="select-btn">Select Template</button>
-                </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-heart"></i> BiodataMaker
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#templates">Templates</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#steps">How It Works</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </div>
         </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+            <div class="container">
+                <h1>The Ultimate Marriage Biodata Maker</h1>
+                <p>Create beautiful biodata for marriage with just a few clicks! Easy to use, fully customizable, elegantly
+                    designed marriage biodata formats</p>
+                <a href="form.html" class="cta-button">Create My Biodata</a>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">biodatas created today</span>
+                    </div>
+                </div>
+                </div>
+        </section>
+        
+        <!-- Templates Section -->
+        <section id="templates" class="templates-section">
+            <div class="container">
+                <h2 class="section-title">Beautifully Handcrafted Marriage Biodata Templates</h2>
+                <p class="section-subtitle">We have designed the best looking, well formatted marriage biodata formats for you
+                    to just choose and make biodata without any hassle. No need to invest time on layouts, designs and getting
+                    that perfect biodata for marriage.</p>
 
-        <div class="footer">
-            <p>&copy; 2024 Marriage Biodata Generator. Create beautiful biodata templates for your special moments.</p>
+            <div class="templates-grid">
+                <!-- Traditional Template -->
+                <div class="template-card">
+                    <div class="template-preview">
+                        <img src="https://via.placeholder.com/400x200/8B4513/FFFFFF?text=Traditional+Elegant" alt="Traditional Template">
+                        </div>
+                        <div class="template-info">
+                            <h3>Traditional Elegant</h3>
+                        <p>A timeless design with traditional Indian motifs and elegant borders. Perfect for families who value cultural
+                            heritage.</p>
+                        <div class="template-actions">
+                            <button class="btn btn-outline" onclick="previewTemplate('traditional')">Preview</button>
+                            <button class="btn btn-primary" onclick="selectTemplate('traditional')">Use Template</button>
+                        </div>
+                        </div>
+                        </div>
+
+                <!-- Modern Template -->
+                <div class="template-card">
+                    <div class="template-preview">
+                        <img src="https://via.placeholder.com/400x200/007BFF/FFFFFF?text=Modern+Minimalist" alt="Modern Template">
+                        </div>
+                        <div class="template-info">
+                            <h3>Modern Minimalist</h3>
+                        <p>Clean lines and contemporary design for modern families. Simple yet sophisticated with excellent readability.</p>
+                        <div class="template-actions">
+                            <button class="btn btn-outline" onclick="previewTemplate('modern')">Preview</button>
+                            <button class="btn btn-primary" onclick="selectTemplate('modern')">Use Template</button>
+                        </div>
+                        </div>
+                        </div>
+
+                <!-- Floral Template -->
+                <div class="template-card">
+                    <div class="template-preview">
+                        <img src="https://via.placeholder.com/400x200/E91E63/FFFFFF?text=Floral+Delight" alt="Floral Template">
+                        </div>
+                        <div class="template-info">
+                            <h3>Floral Delight</h3>
+                        <p>Beautiful floral decorations with soft, romantic colors. Perfect for those who love nature-inspired designs.</p>
+                        <div class="template-actions">
+                            <button class="btn btn-outline" onclick="previewTemplate('floral')">Preview</button>
+                            <button class="btn btn-primary" onclick="selectTemplate('floral')">Use Template</button>
+                        </div>
+                        </div>
+                        </div>
+
+                <!-- Premium Template -->
+                <div class="template-card">
+                    <div class="template-preview">
+                        <img src="https://via.placeholder.com/400x200/FFD700/000000?text=Premium+Gold" alt="Premium Template">
+                        </div>
+                        <div class="template-info">
+                            <h3>Premium Gold</h3>
+                        <p>Luxurious design with gold accents and premium styling. Ideal for special occasions and important families.</p>
+                        <div class="template-actions">
+                            <button class="btn btn-outline" onclick="previewTemplate('premium')">Preview</button>
+                            <button class="btn btn-primary" onclick="selectTemplate('premium')">Use Template</button>
+                        </div>
+                        </div>
+                        </div>
+                        
+                        <!-- Classic Template -->
+                        <div class="template-card">
+                            <div class="template-preview">
+                                <img src="https://via.placeholder.com/400x200/2C3E50/FFFFFF?text=Classic+Professional" alt="Classic Template">
+                            </div>
+                            <div class="template-info">
+                                <h3>Classic Professional</h3>
+                                <p>Timeless professional design with clean typography and structured layout. Perfect for corporate families.</p>
+                                <div class="template-actions">
+                                    <button class="btn btn-outline" onclick="previewTemplate('classic')">Preview</button>
+                                    <button class="btn btn-primary" onclick="selectTemplate('classic')">Use Template</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Royal Template -->
+                        <div class="template-card">
+                            <div class="template-preview">
+                                <img src="https://via.placeholder.com/400x200/8A2BE2/FFFFFF?text=Royal+Heritage" alt="Royal Template">
+                            </div>
+                            <div class="template-info">
+                                <h3>Royal Heritage</h3>
+                                <p>Regal design with royal motifs and sophisticated styling. For families who appreciate luxury and heritage.
+                                </p>
+                                <div class="template-actions">
+                                    <button class="btn btn-outline" onclick="previewTemplate('royal')">Preview</button>
+                                    <button class="btn btn-primary" onclick="selectTemplate('royal')">Use Template</button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        </section>
+                        
+                        <!-- Features Section -->
+                        <section id="features" class="features-section">
+                            <div class="container">
+                                <h2 class="section-title">Why Choose Our Marriage Biodata Maker</h2>
+                        
+                                <div class="features-grid">
+                                    <div class="feature-card">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-mouse-pointer"></i>
+                                        </div>
+                                        <h3>Easy to use</h3>
+                                        <p>No Sign up / Registration required. Enter your details, choose template and voila!! Your biodata in
+                                            PDF format is ready.</p>
+                                    </div>
+                        
+                                    <div class="feature-card">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-sliders-h"></i>
+                                        </div>
+                                        <h3>Customization made simple</h3>
+                                        <p>You have full control of what you want in your marriage biodata. You can add new fields and delete or
+                                            rename the existing fields.</p>
+                                    </div>
+                        
+                                    <div class="feature-card">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-palette"></i>
+                                        </div>
+                                        <h3>Great Looking Templates</h3>
+                                        <p>We have designed these templates which are unique, clean and perfect for a matrimonial biodata</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <!-- Steps Section -->
+                        <section id="steps" class="steps-section">
+                            <div class="container">
+                                <h2 class="section-title">Create your Perfect Marriage Biodata in Just 3 Easy Steps</h2>
+                        
+                                <div class="steps-grid">
+                                    <div class="step-card">
+                                        <div class="step-number">1</div>
+                                        <h3>Enter your information</h3>
+                                        <p>Simply add your personal, family, and contact details. You can also add a profile photo for your
+                                            biodata</p>
+                                    </div>
+                        
+                                    <div class="step-card">
+                                        <div class="step-number">2</div>
+                                        <h3>Choose the template</h3>
+                                        <p>Create biodata with our wide variety of well-designed templates. Just select the template and we will
+                                            do the rest.</p>
+                                    </div>
+                        
+                                    <div class="step-card">
+                                        <div class="step-number">3</div>
+                                        <h3>Download the PDF</h3>
+                                        <p>Everything is done now, you will get your beautiful biodata in the PDF format. Thanks for using our
+                                            marriage biodata maker!!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <!-- Footer -->
+                        <footer id="contact" class="footer">
+                            <div class="container">
+                                <div class="footer-content">
+                                    <div class="footer-section">
+                                        <h3>About Us</h3>
+                                        <p>Welcome to our online matrimonial biodata maker! We are a team of dedicated professionals with a
+                                            passion for making the process of creating a biodata simple, easy, and enjoyable.</p>
+                                    </div>
+                                    <div class="footer-section">
+                                        <h3>Quick Links</h3>
+                                        <a href="#templates">Templates</a>
+                                        <a href="#features">Features</a>
+                                        <a href="#steps">How It Works</a>
+                                        <a href="form.html">Create Biodata</a>
+                                    </div>
+                                    <div class="footer-section">
+                                        <h3>Contact Us</h3>
+                                        <p><i class="fas fa-envelope"></i> support@biodatamaker.app</p>
+                                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                                        <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
+                                    </div>
+                                    <div class="footer-section">
+                                        <h3>Support</h3>
+                                        <a href="#">Terms of Service</a>
+                                        <a href="#">Privacy Policy</a>
+                                        <a href="#">Refund Policy</a>
+                                        <a href="#">Contact Us</a>
+                                    </div>
+                                </div>
+                                <div class="footer-bottom">
+                                    <p>&copy; 2025 - biodatamaker.app</p>
+                                </div>
+                            </div>
+</footer>
+
+    <!-- Template Preview Modal -->
+    <div id="templateModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent">
+                <!-- Template preview content will be loaded here -->
+            </div>
         </div>
     </div>
 
     <script>
+        // Template selection
         function selectTemplate(templateType) {
-            // Store the selected template type
             localStorage.setItem('selectedTemplate', templateType);
-            // Redirect to the form page
             window.location.href = 'form.html';
         }
+
+        // Template preview
+        function previewTemplate(templateType) {
+            const modal = document.getElementById('templateModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            // Load template preview content
+            modalContent.innerHTML = `
+                <div style="padding: 40px;">
+                    <h2 style="text-align: center; margin-bottom: 30px; color: #333;">${getTemplateName(templateType)} - Preview</h2>
+                    <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; text-align: center;">
+                        <img src="https://via.placeholder.com/600x400/${getTemplateColor(templateType)}/FFFFFF?text=${getTemplateName(templateType)}+Preview" 
+                             alt="${getTemplateName(templateType)}" style="max-width: 100%; border-radius: 10px;">
+                        <p style="margin-top: 20px; color: #666;">This is a preview of the ${getTemplateName(templateType)} template. Click "Use Template" to start creating your biodata.</p>
+                        <button onclick="selectTemplate('${templateType}')" style="background: #e74c3c; color: white; border: none; padding: 12px 25px; border-radius: 25px; margin-top: 20px; cursor: pointer;">Use Template</button>
+                    </div>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        // Helper functions
+        function getTemplateName(type) {
+            const names = {
+                'traditional': 'Traditional Elegant',
+                'modern': 'Modern Minimalist',
+                'floral': 'Floral Delight',
+                'premium': 'Premium Gold',
+                'classic': 'Classic Professional',
+                'royal': 'Royal Heritage'
+            };
+            return names[type] || 'Template';
+        }
+
+        function getTemplateColor(type) {
+            const colors = {
+                'traditional': '8B4513',
+                'modern': '007BFF',
+                'floral': 'E91E63',
+                'premium': 'FFD700',
+                'classic': '2C3E50',
+                'royal': '8A2BE2'
+            };
+            return colors[type] || '667eea';
+        }
+
+        // Modal close functionality
+        document.querySelector('.close').onclick = function() {
+            document.getElementById('templateModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('templateModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
