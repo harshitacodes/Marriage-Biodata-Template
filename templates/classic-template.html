@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Professional Biodata Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f8f9fa;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .biodata-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1);
+            border: 2px solid #2c3e50;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #2c3e50;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .main-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .info-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #2c3e50;
+        }
+
+        .info-section h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: center;
+            border-bottom: 1px solid #ecf0f1;
+            padding-bottom: 8px;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            width: 150px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 0.95rem;
+        }
+
+        .info-value {
+            flex: 1;
+            color: #34495e;
+            padding-left: 10px;
+        }
+
+        .photo-section {
+            text-align: center;
+        }
+
+        .photo-container {
+            width: 200px;
+            height: 250px;
+            border: 2px solid #2c3e50;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            font-size: 3rem;
+            color: #2c3e50;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #2c3e50;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 10px;
+            }
+            .biodata-container {
+                box-shadow: none;
+                border: 1px solid #2c3e50;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            .biodata-container {
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="biodata-container">
+        <div class="header">
+            <h1>BIODATA</h1>
+            <div class="subtitle">Professional Profile & Information</div>
+        </div>
+
+        <div class="content">
+            <div class="main-info">
+                <div class="info-section">
+                    <h3>Personal Information</h3>
+                    <div class="info-row">
+                        <div class="info-label">Name:</div>
+                        <div class="info-value" id="name">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Date of Birth:</div>
+                        <div class="info-value" id="dob">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Time of Birth:</div>
+                        <div class="info-value" id="birthTime">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Place of Birth:</div>
+                        <div class="info-value" id="birthPlace">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Height:</div>
+                        <div class="info-value" id="height">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Complexion:</div>
+                        <div class="info-value" id="complexion">-</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Astrological Information</h3>
+                    <div class="info-row">
+                        <div class="info-label">Rashi:</div>
+                        <div class="info-value" id="rashi">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Nakshatra:</div>
+                        <div class="info-value" id="nakshatra">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Caste:</div>
+                        <div class="info-value" id="caste">-</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Educational & Professional</h3>
+                    <div class="info-row">
+                        <div class="info-label">Qualification:</div>
+                        <div class="info-value" id="qualification">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Occupation:</div>
+                        <div class="info-value" id="occupation">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Work Status:</div>
+                        <div class="info-value" id="workStatus">-</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Family Information</h3>
+                    <div class="info-row">
+                        <div class="info-label">Father's Name:</div>
+                        <div class="info-value" id="fatherName">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Mother's Name:</div>
+                        <div class="info-value" id="motherName">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Family Type:</div>
+                        <div class="info-value" id="familyType">-</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Contact Information</h3>
+                    <div class="info-row">
+                        <div class="info-label">Phone:</div>
+                        <div class="info-value" id="phone">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Email:</div>
+                        <div class="info-value" id="email">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Address:</div>
+                        <div class="info-value" id="address">-</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Partner Expectations</h3>
+                    <div class="info-value" id="expectations" style="margin-top: 10px; padding-left: 0;">-</div>
+                </div>
+            </div>
+
+            <div class="photo-section">
+                <div class="photo-container" id="photoPlaceholder">
+                    <div class="photo-placeholder">📷</div>
+                </div>
+                <p style="color: #7f8c8d; font-size: 0.9rem;">Profile Photo</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Professional • Reliable • Trustworthy</p>
+        </div>
+    </div>
+</body>
+</html>

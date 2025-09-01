@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floral Biodata Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fff5f5, #fef7ff);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .biodata-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(233, 30, 99, 0.1);
+            border: 2px solid #e91e63;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .biodata-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #e91e63, #9c27b0, #e91e63);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e91e63;
+            position: relative;
+        }
+
+        .header::after {
+            content: '🌸 🌸 🌸';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 20px;
+            font-size: 1.2rem;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            color: #e91e63;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #9c27b0;
+            font-style: italic;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .main-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .info-section {
+            background: rgba(233, 30, 99, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #e91e63;
+            position: relative;
+        }
+
+        .info-section::before {
+            content: '🌺';
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .info-section h3 {
+            color: #e91e63;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        .info-label {
+            width: 150px;
+            font-weight: bold;
+            color: #9c27b0;
+            font-size: 0.95rem;
+        }
+
+        .info-value {
+            flex: 1;
+            color: #333;
+            padding-left: 10px;
+        }
+
+        .photo-section {
+            text-align: center;
+        }
+
+        .photo-container {
+            width: 200px;
+            height: 250px;
+            border: 3px solid #e91e63;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #fff5f5, #fef7ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .photo-container::before {
+            content: '🌹';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            font-size: 3rem;
+            color: #e91e63;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e91e63;
+            color: #9c27b0;
+            font-style: italic;
+        }
+
+        .footer::before {
+            content: '🌸 🌸 🌸';
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 10px;
+            }
+            .biodata-container {
+                box-shadow: none;
+                border: 1px solid #e91e63;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            .biodata-container {
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="biodata-container">
+        <div class="header">
+            <h1>BIODATA</h1>
+            <div class="subtitle">A Beautiful Journey of Life</div>
+        </div>
+
+        <div class="content">
+            <div class="main-info">
+                <div class="info-section">
+                    <h3>Personal Information</h3>
+                    <div class="info-row">
+                        <div class="info-label">Name:</div>
+                        <div class="info-value" id="name">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Date of Birth:</div>
+                        <div class="info-value" id="dob">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Time of Birth:</div>
+                        <div class="info-value" id="birthTime">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Place of Birth:</div>
+                        <div class="info-value" id="birthPlace">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Height:</div>
+                        <div class="info-value" id="height">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Complexion:</div>
+                        <div class="info-value" id="complexion">-</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Astrological Information</h3>
+                    <div class="info-row">
+                        <div class="info-label">Rashi:</div>
+                        <div class="info-value" id="rashi">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Nakshatra:</div>
+                        <div class="info-value" id="nakshatra">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Caste:</div>
+                        <div class="info-value" id="caste">-</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Educational & Professional</h3>
+                    <div class="info-row">
+                        <div class="info-label">Qualification:</div>
+                        <div class="info-value" id="qualification">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Occupation:</div>
+                        <div class="info-value" id="occupation">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Work Status:</div>
+                        <div class="info-value" id="workStatus">-</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Family Information</h3>
+                    <div class="info-row">
+                        <div class="info-label">Father's Name:</div>
+                        <div class="info-value" id="fatherName">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Mother's Name:</div>
+                        <div class="info-value" id="motherName">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Family Type:</div>
+                        <div class="info-value" id="familyType">-</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Contact Information</h3>
+                    <div class="info-row">
+                        <div class="info-label">Phone:</div>
+                        <div class="info-value" id="phone">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Email:</div>
+                        <div class="info-value" id="email">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Address:</div>
+                        <div class="info-value" id="address">-</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Partner Expectations</h3>
+                    <div class="info-value" id="expectations" style="margin-top: 10px; padding-left: 0;">-</div>
+                </div>
+            </div>
+
+            <div class="photo-section">
+                <div class="photo-container" id="photoPlaceholder">
+                    <div class="photo-placeholder">📷</div>
+                </div>
+                <p style="color: #9c27b0; font-size: 0.9rem; font-style: italic;">Profile Photo</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>May your journey be filled with love, joy, and beautiful moments</p>
+        </div>
+    </div>
+</body>
+</html>
